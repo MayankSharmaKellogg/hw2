@@ -71,8 +71,71 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+Movie.destroy_all
+Studio.destroy_all
+Actor.destroy_all
+Role.destroy_all
+
+Rails.logger.info "------------------------"
+Rails.logger.info "----- FRESH START! -----"
+Rails.logger.info "------------------------"
+
 # Generate models and tables, according to the domain model.
 # TODO!
+
+
+# - Add model and table for the Company entity in our domain model
+
+# 1. in terminal, generate the model and table for Company
+
+rails generate model Movie
+
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT,
+year_released INTEGER,
+rated TEXT,
+studio_id INTEGER
+
+  t.string "title"
+  t.string "year_released"
+  t.string "rated"
+  t.string "studio_id"
+
+rails generate model Studio
+name TEXT
+
+rails generate model Actor
+name TEXT
+
+rails generate model Role
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_id INTEGER,
+  actor_id INTEGER,
+  character_name TEXT
+
+
+
+# 2. open newly generated files
+
+# 3. in the db/migrate file, add relevant columns matching our domain model
+
+
+# 4. in terminal, execute the migration file
+# rails db:migrate
+
+# 5. check the schema to confirm the change
+
+
+new_company = Company.new
+new_company["name"] = "Apple"
+new_company["city"] = "Cupertino"
+new_company["state"] = "CA"
+new_company["url"] = "https://www.apple.com"
+new_company.save
+
+puts "companies: #{Company.all.count}" # companies: 1
+
+
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
