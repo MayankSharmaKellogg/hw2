@@ -88,33 +88,6 @@ Rails.logger.info "------------------------"
 
 # 1. in terminal, generate the model and table for Company
 
-rails generate model Movie
-
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-title TEXT,
-year_released INTEGER,
-rated TEXT,
-studio_id INTEGER
-
-  t.string "title"
-  t.string "year_released"
-  t.string "rated"
-  t.string "studio_id"
-
-rails generate model Studio
-name TEXT
-
-rails generate model Actor
-name TEXT
-
-rails generate model Role
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_id INTEGER,
-  actor_id INTEGER,
-  character_name TEXT
-
-
-
 # 2. open newly generated files
 
 # 3. in the db/migrate file, add relevant columns matching our domain model
@@ -126,20 +99,183 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 # 5. check the schema to confirm the change
 
 
-new_company = Company.new
-new_company["name"] = "Apple"
-new_company["city"] = "Cupertino"
-new_company["state"] = "CA"
-new_company["url"] = "https://www.apple.com"
-new_company.save
-
-puts "companies: #{Company.all.count}" # companies: 1
-
-
-
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+new_studio = Studio.new
+new_studio["name"] = "Warner Bros."
+
+
+
+new_movie = Movie.new
+new_movie["title"] = "Batman Begins"
+new_movie["year_released"] = 2005
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = 1
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight"
+new_movie["year_released"] = 2008
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = 1
+new_movie.save
+
+new_movie = Movie.new
+new_movie["title"] = "The Dark Knight Rises"
+new_movie["year_released"] = 2012
+new_movie["rated"] = "PG-13"
+new_movie["studio_id"] = 1
+new_movie.save
+
+puts "movies: #{Movie.all.count}" # expected output - movies: 3
+
+-- Batman Begins
+
+new_actor = actor.new
+new_actor["name"] = "Christian Bale"
+new_movie.save
+
+new_actor["name"] = "Michael Caine"
+new_movie.save
+
+new_actor["name"] = "Liam Neeson"
+new_movie.save
+
+new_actor["name"] = "Katie Holmes"
+new_movie.save
+
+new_actor["name"] = "Gary Oldman"
+new_movie.save
+
+
+
+new_role = role.new
+new_role["movie_id"] = 1
+new_role["actor_id"] = 1
+new_role["character_name"] = "Bruce Wayne"
+new_role.save
+
+
+new_role = role.new
+new_role["movie_id"] = 1
+new_role["actor_id"] = 2
+new_role["character_name"] = "Alfred"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 1
+new_role["actor_id"] = 3
+new_role["character_name"] = "Ra's Al Ghul"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 1
+new_role["actor_id"] = 4
+new_role["character_name"] = "Rachel Dawes"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 1
+new_role["actor_id"] = 5
+new_role["character_name"] = "Commissioner Gordon"
+new_role.save
+
+
+
+-- The Dark Knight
+
+new_actor = actor.new
+new_actor["name"] = "Heath Ledger"
+new_movie.save
+
+new_actor = actor.new
+new_actor["name"] = "Aaron Eckhart"
+new_movie.save
+
+new_actor = actor.new
+new_actor["name"] = "Maggie Gyllenhaal"
+new_movie.save
+
+
+
+new_role = role.new
+new_role["movie_id"] = 2
+new_role["actor_id"] = 1
+new_role["character_name"] = "Bruce Wayne"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 2
+new_role["actor_id"] = 6
+new_role["character_name"] = "Joker"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 2
+new_role["actor_id"] = 7
+new_role["character_name"] = "Harvey Dent"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 2
+new_role["actor_id"] = 2
+new_role["character_name"] = "Alfred"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 2
+new_role["actor_id"] = 8
+new_role["character_name"] = "Rachel Dawes"
+new_role.save
+
+-- The Dark Knight Rises
+
+new_actor = actor.new
+new_actor["name"] = "Tom Hardy"
+new_movie.save
+
+new_actor = actor.new
+new_actor["name"] = "Joseph Gordon-Levitt"
+new_movie.save
+
+new_actor = actor.new
+new_actor["name"] = "Anne Hathaway"
+new_movie.save
+
+
+
+new_role = role.new
+new_role["movie_id"] = 3
+new_role["actor_id"] = 1
+new_role["character_name"] = "Bruce Wayne"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 3
+new_role["actor_id"] = 5
+new_role["character_name"] = "Commissioner Gordon"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 3
+new_role["actor_id"] = 9
+new_role["character_name"] = "Bane"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 3
+new_role["actor_id"] = 10
+new_role["character_name"] = "John Blake"
+new_role.save
+
+new_role = role.new
+new_role["movie_id"] = 3
+new_role["actor_id"] = 11
+new_role["character_name"] = "Selina Kyle"
+new_role.save
+
 
 # Prints a header for the movies output
 puts "Movies"
@@ -162,85 +298,7 @@ puts ""
 .mode columns
 .headers off
 
--- Drop existing tables, so you'll start fresh each time this script is run.
-DROP TABLE IF EXISTS studios;
-DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS actors;
-DROP TABLE IF EXISTS roles;
 
--- Create new tables, according to your domain model
-CREATE TABLE studios (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT
-);
-
-CREATE TABLE movies (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  title TEXT,
-  year_released INTEGER,
-  rated TEXT,
-  studio_id INTEGER
-);
-
-CREATE TABLE actors (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT
-);
-
-CREATE TABLE roles (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  movie_id INTEGER,
-  actor_id INTEGER,
-  character_name TEXT
-);
-
--- Insert data into your database that reflects the sample data shown above
--- Use hard-coded foreign key IDs when necessary
-INSERT INTO studios (name) VALUES ("Warner Bros."); -- 1
-
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("Batman Begins", 2005, "PG-13", 1);
-
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("The Dark Knight", 2008, "PG-13", 1);
-
-INSERT INTO movies (title, year_released, rated, studio_id)
-VALUES ("The Dark Knight Rises", 2012, "PG-13", 1);
-
--- Batman Begins
-INSERT INTO actors (name) VALUES ("Christian Bale"); -- 1
-INSERT INTO actors (name) VALUES ("Michael Caine"); -- 2
-INSERT INTO actors (name) VALUES ("Liam Neeson");  -- 3
-INSERT INTO actors (name) VALUES ("Katie Holmes");  -- 4
-INSERT INTO actors (name) VALUES ("Gary Oldman");  -- 5
-
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (1, 1, "Bruce Wayne");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (1, 2, "Alfred");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (1, 3, "Ra's Al Ghul");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (1, 4, "Rachel Dawes");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (1, 5, "Commissioner Gordon");
-
--- The Dark Knight
-INSERT INTO actors (name) VALUES ("Heath Ledger"); -- 6
-INSERT INTO actors (name) VALUES ("Aaron Eckhart"); -- 7
-INSERT INTO actors (name) VALUES ("Maggie Gyllenhaal"); -- 8
-
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (2, 1, "Bruce Wayne");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (2, 6, "Joker");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (2, 7, "Harvey Dent");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (2, 2, "Alfred");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (2, 8, "Rachel Dawes");
-
--- The Dark Knight Rises
-INSERT INTO actors (name) VALUES ("Tom Hardy"); -- 9
-INSERT INTO actors (name) VALUES ("Joseph Gordon-Levitt"); -- 10
-INSERT INTO actors (name) VALUES ("Anne Hathaway"); -- 11
-
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (3, 1, "Bruce Wayne");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (3, 5, "Commissioner Gordon");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (3, 9, "Bane");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (3, 10, "John Blake");
-INSERT INTO roles (movie_id, actor_id, character_name) VALUES (3, 11, "Selina Kyle");
 
 -- Prints a header for the movies output
 .print "Movies"
