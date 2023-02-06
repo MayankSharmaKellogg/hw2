@@ -103,183 +103,184 @@ Rails.logger.info "------------------------"
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-new_studio = Studio.new
-new_studio["id"] = 1
-new_studio["name"] = "Warner Bros."
+studio = Studio.new
+studio["id"] = 1
+studio["name"] = "Warner Bros."
 
 
 
-new_movie = Movie.new
-new_movie["title"] = "Batman Begins"
-new_movie["year_released"] = 2005
-new_movie["rated"] = "PG-13"
-new_movie["studio_id"] = 1
-new_movie.save
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = 2005
+movie["rated"] = "PG-13"
+movie["studio_id"] = 1
+movie.save
 
-new_movie1 = Movie.new
-new_movie1["title"] = "The Dark Knight"
-new_movie1["year_released"] = 2008
-new_movie1["rated"] = "PG-13"
-new_movie1["studio_id"] = 1
-new_movie1.save
+movie = Movie.new
+movie["title"] = "The Dark Knight"
+movie["year_released"] = 2008
+movie["rated"] = "PG-13"
+movie["studio_id"] = 1
+movie.save
 
-new_movie2 = Movie.new
-new_movie2["title"] = "The Dark Knight Rises"
-new_movie2["year_released"] = 2012
-new_movie2["rated"] = "PG-13"
-new_movie2["studio_id"] = 1
-new_movie2.save
+movie = Movie.new
+movie["title"] = "The Dark Knight Rises"
+movie["year_released"] = 2012
+movie["rated"] = "PG-13"
+movie["studio_id"] = 1
+movie.save
 
-puts "movies: #{Movie.all.count}" # expected output - movies: 3
+#puts "movies: #{Movie.all.count}" # expected output - movies: 3
 
--- Batman Begins
+# Batman Begins
 
-new_actor = actor.new
+new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
 new_actor.save
 
-new_actor1["name"] = "Michael Caine"
-new_actor1.save
+new_actor = Actor.new
+new_actor["name"] = "Michael Caine"
+new_actor.save
 
-new_actor2["name"] = "Liam Neeson"
-new_actor2.save
+new_actor = Actor.new
+new_actor["name"] = "Liam Neeson"
+new_actor.save
 
-new_actor3["name"] = "Katie Holmes"
-new_actor3.save
+new_actor = Actor.new
+new_actor["name"] = "Katie Holmes"
+new_actor.save
 
-new_actor4["name"] = "Gary Oldman"
-new_actor4.save
-
-
-
-new_role = role.new
-new_role["movie_id"] = 1
-new_role["actor_id"] = 1
-new_role["character_name"] = "Bruce Wayne"
-new_role.save
-
-
-new_role1 = role.new
-new_role1["movie_id"] = 1
-new_role1["actor_id"] = 2
-new_role1["character_name"] = "Alfred"
-new_role1.save
-
-new_role2 = role.new
-new_role2["movie_id"] = 1
-new_role2["actor_id"] = 3
-new_role2["character_name"] = "Ra's Al Ghul"
-new_role2.save
-
-new_role3 = role.new
-new_role3["movie_id"] = 1
-new_role3["actor_id"] = 4
-new_role3["character_name"] = "Rachel Dawes"
-new_role3.save
-
-new_role4 = role.new
-new_role4["movie_id"] = 1
-new_role4["actor_id"] = 5
-new_role4["character_name"] = "Commissioner Gordon"
-new_role4.save
+new_actor = Actor.new
+new_actor["name"] = "Gary Oldman"
+new_actor.save
 
 
 
--- The Dark Knight
-
-new_actor5 = actor.new
-new_actor5["name"] = "Heath Ledger"
-new_actor5.save
-
-new_actor6 = actor.new
-new_actor6["name"] = "Aaron Eckhart"
-new_actor6.save
-
-new_actor7 = actor.new
-new_actor7["name"] = "Maggie Gyllenhaal"
-new_actor7.save
+role = Role.new
+role["movie_id"] = 1
+role["actor_id"] = 1
+role["character_name"] = "Bruce Wayne"
+role.save
 
 
+role = Role.new
+role["movie_id"] = 1
+role["actor_id"] = 2
+role["character_name"] = "Alfred"
+role.save
 
-new_role5 = role.new
-new_role5["movie_id"] = 2
-new_role5["actor_id"] = 1
-new_role5["character_name"] = "Bruce Wayne"
-new_role5.save
+role = Role.new
+role["movie_id"] = 1
+role["actor_id"] = 3
+role["character_name"] = "Ra's Al Ghul"
+role.save
 
-new_role6 = role.new
-new_role6["movie_id"] = 2
-new_role6["actor_id"] = 6
-new_role6["character_name"] = "Joker"
-new_role6.save
+role = Role.new
+role["movie_id"] = 1
+role["actor_id"] = 4
+role["character_name"] = "Rachel Dawes"
+role.save
 
-new_role7 = role.new
-new_role7["movie_id"] = 2
-new_role7["actor_id"] = 7
-new_role7["character_name"] = "Harvey Dent"
-new_role7.save
-
-new_role8 = role.new
-new_role8["movie_id"] = 2
-new_role8["actor_id"] = 2
-new_role8["character_name"] = "Alfred"
-new_role8.save
-
-new_role9 = role.new
-new_role9["movie_id"] = 2
-new_role9["actor_id"] = 8
-new_role9["character_name"] = "Rachel Dawes"
-new_role9.save
-
--- The Dark Knight Rises
-
-new_actor8 = actor.new
-new_actor8["name"] = "Tom Hardy"
-new_actor8.save
-
-new_actor9 = actor.new
-new_actor9["name"] = "Joseph Gordon-Levitt"
-new_actor9.save
-
-new_actor10 = actor.new
-new_actor10["name"] = "Anne Hathaway"
-new_actor10.save
+role = Role.new
+role["movie_id"] = 1
+role["actor_id"] = 5
+role["character_name"] = "Commissioner Gordon"
+role.save
 
 
 
-new_role10 = role.new
-new_role10["movie_id"] = 3
-new_role10["actor_id"] = 1
-new_role10["character_name"] = "Bruce Wayne"
-new_role10.save
+# The Dark Knight
 
-new_role11 = role.new
-new_role11["movie_id"] = 3
-new_role11["actor_id"] = 5
-new_role11["character_name"] = "Commissioner Gordon"
-new_role11.save
+new_actor = Actor.new
+new_actor["name"] = "Heath Ledger"
+new_actor.save
 
-new_role12 = role.new
-new_role12["movie_id"] = 3
-new_role12["actor_id"] = 9
-new_role12["character_name"] = "Bane"
-new_role12.save
+new_actor = Actor.new
+new_actor["name"] = "Aaron Eckhart"
+new_actor.save
 
-new_role13 = role.new
-new_role13["movie_id"] = 3
-new_role13["actor_id"] = 10
-new_role13["character_name"] = "John Blake"
-new_role13.save
+new_actor = Actor.new
+new_actor["name"] = "Maggie Gyllenhaal"
+new_actor.save
 
-new_role14 = role.new
-new_role14["movie_id"] = 3
-new_role14["actor_id"] = 11
-new_role14["character_name"] = "Selina Kyle"
-new_role14.save
 
-# Turns column mode on but headers off
-.mode columns
-.headers off
+
+role = Role.new
+role["movie_id"] = 2
+role["actor_id"] = 1
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = 2
+role["actor_id"] = 6
+role["character_name"] = "Joker"
+role.save
+
+role = Role.new
+role["movie_id"] = 2
+role["actor_id"] = 7
+role["character_name"] = "Harvey Dent"
+role.save
+
+role = Role.new
+role["movie_id"] = 2
+role["actor_id"] = 2
+role["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role["movie_id"] = 2
+role["actor_id"] = 8
+role["character_name"] = "Rachel Dawes"
+role.save
+
+# The Dark Knight Rises
+
+new_actor = Actor.new
+new_actor["name"] = "Tom Hardy"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Joseph Gordon-Levitt"
+new_actor.save
+
+new_actor = Actor.new
+new_actor["name"] = "Anne Hathaway"
+new_actor.save
+
+
+
+role = Role.new
+role["movie_id"] = 3
+role["actor_id"] = 1
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = 3
+role["actor_id"] = 5
+role["character_name"] = "Commissioner Gordon"
+role.save
+
+role = Role.new
+role["movie_id"] = 3
+role["actor_id"] = 9
+role["character_name"] = "Bane"
+role.save
+
+role = Role.new
+role["movie_id"] = 3
+role["actor_id"] = 10
+role["character_name"] = "John Blake"
+role.save
+
+role = Role.new
+role["movie_id"] = 3
+role["actor_id"] = 11
+role["character_name"] = "Selina Kyle"
+role.save
+
 
 # Prints a header for the movies output
 puts "Movies"
@@ -291,25 +292,50 @@ puts ""
 
 # All rows in movies table
 all_movies = Movie.all
-puts all_movies.inspect
 
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-for movie in movies
-  
 
+#	Query the movies data and loop through the results to display the movies output.
+#	TODO!
+
+for movie in all_movies
+    dtitle = movie["title"]
+    dyear_released = movie["year_released"]
+    drated = movie["rated"]
+    dstudio = Studio.where({"id" => movie["studio_id"]})
+    dstudio_name = studio["name"]
+    puts "#{dtitle}     #{dyear_released}       #{drated}       #{dstudio_name}"
+end
 
 # The SQL statement for the movies output
 #SELECT movies.title, movies.year_released, movies.rated, studios.name 
 #FROM movies INNER JOIN studios ON studios.id = movies.studio_id;
+
 
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
+
+
+# All rows in roles table
+all_roles = Role.all
+
+#	Query the cast data and loop through the results to display the cast output for each movie.
+#	TODO!
+
+for role in all_roles
+    movie = Movie.where({"id" => role["movie_id"]})
+    dmovie_title = movie["title"]
+    actor = Actor.where({"id" => role["actor_id"]})
+    dactor_name = actor["name"]
+    dcharacter_name = role["character_name"]
+    puts "#{dmovie_title}   #{dactor_name}   #{dcharacter_name}"
+end
 
 #The SQL statement for the cast output
 #SELECT movies.title, actors.name, roles.character_name 
