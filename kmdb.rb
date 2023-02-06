@@ -76,9 +76,7 @@ Studio.destroy_all
 Actor.destroy_all
 Role.destroy_all
 
-Rails.logger.info "------------------------"
-Rails.logger.info "----- FRESH START! -----"
-Rails.logger.info "------------------------"
+
 
 # Generate models and tables, according to the domain model.
 # TODO!
@@ -104,30 +102,30 @@ Rails.logger.info "------------------------"
 # TODO!
 
 studio = Studio.new
-studio["id"] = 1
 studio["name"] = "Warner Bros."
+studio.save
 
-
+st1 = Studio.find_by({"name" => "Warners Bros."} )
 
 movie = Movie.new
 movie["title"] = "Batman Begins"
 movie["year_released"] = 2005
 movie["rated"] = "PG-13"
-movie["studio_id"] = 1
+movie["studio_id"] = st1["id"]
 movie.save
 
 movie = Movie.new
 movie["title"] = "The Dark Knight"
 movie["year_released"] = 2008
 movie["rated"] = "PG-13"
-movie["studio_id"] = 1
+movie["studio_id"] = st1["id"]
 movie.save
 
 movie = Movie.new
 movie["title"] = "The Dark Knight Rises"
 movie["year_released"] = 2012
 movie["rated"] = "PG-13"
-movie["studio_id"] = 1
+movie["studio_id"] = st1["id"]
 movie.save
 
 #puts "movies: #{Movie.all.count}" # expected output - movies: 3
