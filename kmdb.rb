@@ -105,32 +105,32 @@ studio = Studio.new
 studio["name"] = "Warner Bros."
 studio.save
 
-st1 = Studio.find_by({"name" => "Warners Bros."} )
+studio_wb = Studio.find_by({"name" => "Warners Bros."})
 
 movie = Movie.new
 movie["title"] = "Batman Begins"
 movie["year_released"] = 2005
 movie["rated"] = "PG-13"
-movie["studio_id"] = st1["id"]
+movie["studio_id"] = studio_wb["id"]
 movie.save
 
 movie = Movie.new
 movie["title"] = "The Dark Knight"
 movie["year_released"] = 2008
 movie["rated"] = "PG-13"
-movie["studio_id"] = st1["id"]
+movie["studio_id"] = studio_wb["id"]
 movie.save
 
 movie = Movie.new
 movie["title"] = "The Dark Knight Rises"
 movie["year_released"] = 2012
 movie["rated"] = "PG-13"
-movie["studio_id"] = st1["id"]
+movie["studio_id"] = studio_wb["id"]
 movie.save
 
 #puts "movies: #{Movie.all.count}" # expected output - movies: 3
 
-# Batman Begins
+#Actors in Batman Begins
 
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
@@ -152,42 +152,7 @@ new_actor = Actor.new
 new_actor["name"] = "Gary Oldman"
 new_actor.save
 
-
-
-role = Role.new
-role["movie_id"] = 1
-role["actor_id"] = 1
-role["character_name"] = "Bruce Wayne"
-role.save
-
-
-role = Role.new
-role["movie_id"] = 1
-role["actor_id"] = 2
-role["character_name"] = "Alfred"
-role.save
-
-role = Role.new
-role["movie_id"] = 1
-role["actor_id"] = 3
-role["character_name"] = "Ra's Al Ghul"
-role.save
-
-role = Role.new
-role["movie_id"] = 1
-role["actor_id"] = 4
-role["character_name"] = "Rachel Dawes"
-role.save
-
-role = Role.new
-role["movie_id"] = 1
-role["actor_id"] = 5
-role["character_name"] = "Commissioner Gordon"
-role.save
-
-
-
-# The Dark Knight
+# Actors in The Dark Knight
 
 new_actor = Actor.new
 new_actor["name"] = "Heath Ledger"
@@ -201,39 +166,7 @@ new_actor = Actor.new
 new_actor["name"] = "Maggie Gyllenhaal"
 new_actor.save
 
-
-
-role = Role.new
-role["movie_id"] = 2
-role["actor_id"] = 1
-role["character_name"] = "Bruce Wayne"
-role.save
-
-role = Role.new
-role["movie_id"] = 2
-role["actor_id"] = 6
-role["character_name"] = "Joker"
-role.save
-
-role = Role.new
-role["movie_id"] = 2
-role["actor_id"] = 7
-role["character_name"] = "Harvey Dent"
-role.save
-
-role = Role.new
-role["movie_id"] = 2
-role["actor_id"] = 2
-role["character_name"] = "Alfred"
-role.save
-
-role = Role.new
-role["movie_id"] = 2
-role["actor_id"] = 8
-role["character_name"] = "Rachel Dawes"
-role.save
-
-# The Dark Knight Rises
+# Actors in The Dark Knight Rises
 
 new_actor = Actor.new
 new_actor["name"] = "Tom Hardy"
@@ -249,33 +182,120 @@ new_actor.save
 
 
 
+movie_1 = Movie.where({"title" => "Batman Begins"})
+movie_2 = Movie.where({"title" => "Batman Begins"})
+movie_3 = Movie.where({"title" => "Batman Begins"})
+
+
+actor_1 = Actor.where({"name" => "Christian Bale"})
+actor_2 = Actor.where({"name" => "Michael Caine"})
+actor_3 = Actor.where({"name" => "Liam Neeson"})
+actor_4 = Actor.where({"name" => "Katie Holmes"})
+actor_5 = Actor.where({"name" => "Gary Oldman"})
+actor_6 = Actor.where({"name" => "Heath Ledger"})
+actor_7 = Actor.where({"name" => "Aaron Eckhart"})
+actor_8 = Actor.where({"name" => "Maggie Gyllenhaal"})
+actor_9 = Actor.where({"name" => "Tom Hardy"})
+actor_10 = Actor.where({"name" => "Joseph Gordon-Levitt"})
+actor_11 = Actor.where({"name" => "Anne Hathaway"})
+
+# Roles in Batman Begins
+
 role = Role.new
-role["movie_id"] = 3
-role["actor_id"] = 1
+role["movie_id"] = movie_1["id"]
+role["actor_id"] = actor_1["id"]
+role["character_name"] = "Bruce Wayne"
+role.save
+
+
+role = Role.new
+role["movie_id"] = movie_1["id"]
+role["actor_id"] = actor_2["id"]
+role["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_1["id"]
+role["actor_id"] = actor_3["id"]
+role["character_name"] = "Ra's Al Ghul"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_1["id"]
+role["actor_id"] = actor_4["id"]
+role["character_name"] = "Rachel Dawes"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_1["id"]
+role["actor_id"] = actor_5["id"]
+role["character_name"] = "Commissioner Gordon"
+role.save
+
+
+# Roles in The Dark Knight
+
+role = Role.new
+role["movie_id"] = movie_2["id"]
+role["actor_id"] = actor_1["id"]
 role["character_name"] = "Bruce Wayne"
 role.save
 
 role = Role.new
-role["movie_id"] = 3
-role["actor_id"] = 5
+role["movie_id"] = movie_2["id"]
+role["actor_id"] = actor_6["id"]
+role["character_name"] = "Joker"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_2["id"]
+role["actor_id"] = actor_7["id"]
+role["character_name"] = "Harvey Dent"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_2["id"]
+role["actor_id"] = actor_2["id"]
+role["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_2["id"]
+role["actor_id"] = actor_8["id"]
+role["character_name"] = "Rachel Dawes"
+role.save
+
+
+
+# Roles in The Dark Knight Rises
+
+role = Role.new
+role["movie_id"] = movie_3["id"]
+role["actor_id"] = actor_1["id"]
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = movie_3["id"]
+role["actor_id"] = actor_5["id"]
 role["character_name"] = "Commissioner Gordon"
 role.save
 
 role = Role.new
-role["movie_id"] = 3
-role["actor_id"] = 9
+role["movie_id"] = movie_3["id"]
+role["actor_id"] = actor_9["id"]
 role["character_name"] = "Bane"
 role.save
 
 role = Role.new
-role["movie_id"] = 3
-role["actor_id"] = 10
+role["movie_id"] = movie_3["id"]
+role["actor_id"] = actor_10["id"]
 role["character_name"] = "John Blake"
 role.save
 
 role = Role.new
-role["movie_id"] = 3
-role["actor_id"] = 11
+role["movie_id"] = movie_3["id"]
+role["actor_id"] = actor_11["id"]
 role["character_name"] = "Selina Kyle"
 role.save
 
